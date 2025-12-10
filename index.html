@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <title>Менеджмент изменений по Адизесу</title>
+  <title>Менеджмент изменений по методологии Adizes</title>
 
-  <!-- Шрифты -->
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <!-- Шрифты с font-display: swap -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand:wght@400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
@@ -15,9 +15,8 @@
   <style>
     :root {
       --primary-text: #2c3e50;
-      --bg: linear-gradient(135deg, #f8f9fe 0%, #f0f7ff 100%);
       --card-radius: 20px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -27,45 +26,15 @@
     }
 
     body {
-      background: var(--bg);
+      background: #f9fbfd;
       font-family: 'Inter', sans-serif;
-      color: #333;
-      line-height: 1.7;
+      color: var(--primary-text);
+      line-height: 1.65;
       scroll-behavior: smooth;
       position: relative;
       min-height: 100vh;
     }
 
-    /* === ФОНОВЫЕ ФИГУРЫ === */
-    .background-shapes {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -1;
-    }
-
-    .shape {
-      position: absolute;
-      border-radius: 50%;
-      background: currentColor;
-      opacity: 0.04;
-    }
-
-    .shape-1 { width: 400px; height: 400px; top: 10%; left: 5%; color: #3498db; border-radius: 36% 64% 30% 70% / 40% 35% 65% 60%; }
-    .shape-2 { width: 300px; height: 300px; bottom: 15%; right: 8%; color: #2ecc71; border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%; }
-    .shape-3 { width: 250px; height: 250px; top: 40%; right: 20%; color: #f39c12; border-radius: 60% 40% 35% 65% / 30% 60% 40% 70%; }
-    .shape-4 { width: 200px; height: 200px; bottom: 30%; left: 15%; color: #9b59b6; border-radius: 55% 45% 50% 50% / 40% 60% 50% 50%; }
-
-    @media (max-width: 768px) {
-      .shape-1, .shape-3 { display: none; }
-      .shape-2 { width: 200px; height: 200px; bottom: 5%; right: 2%; }
-      .shape-4 { width: 150px; height: 150px; bottom: 25%; left: 5%; }
-    }
-
-    /* === ШАПКА И МЕНЮ === */
     header {
       position: sticky;
       top: 0;
@@ -74,7 +43,6 @@
       padding: 1rem 2rem;
       z-index: 1000;
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      font-family: 'Inter', sans-serif;
     }
 
     .nav-container {
@@ -84,9 +52,17 @@
     }
 
     .logo {
+      font-family: 'Inter', sans-serif;
       font-weight: 600;
       color: var(--primary-text);
       font-size: 1.2rem;
+    }
+
+    .logo-text {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 1.4rem;
+      color: var(--primary-text);
+      letter-spacing: 0.5px;
     }
 
     nav ul {
@@ -100,10 +76,6 @@
       color: var(--primary-text);
       font-weight: 500;
       transition: color 0.2s;
-    }
-
-    nav a:hover {
-      color: #2980b9;
     }
 
     .burger {
@@ -123,7 +95,6 @@
       transition: all 0.3s ease;
     }
 
-    /* === КОНТЕНТ === */
     main {
       padding-top: 90px;
       padding-bottom: 80px;
@@ -164,30 +135,29 @@
     }
 
     .card {
-      background: white;
       border-radius: var(--card-radius);
-      padding: 2.2rem;
+      padding: 2.4rem;
       margin: 2.5rem auto;
       box-shadow: var(--shadow);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      transition: transform 0.4s ease;
+      color: var(--primary-text);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
     }
 
-    /* === ЦВЕТНЫЕ ФОНЫ БЛОКОВ === */
-    #block1 .card { background: #e3f2fd; }
-    #block2 .card { background: #e8f5e9; }
-    #block3 .card { background: #f0f8ff; }
-    #block4 .card { background: #f0fdf7; }
-    #block5 .card { background: #eef7ff; }
+    /* ЯРКИЕ, НО СВЕТЛЫЕ ФОНЫ */
+    #block1 .card { background: #d6eaf8; }
+    #block2 .card { background: #d5f5e3; }
+    #block3 .card { background: #ebf5fb; }
+    #block4 .card { background: #e8f6f3; }
+    #block5 .card { background: #d1f2eb; }
 
     p, ul, ol, li {
       margin: 1rem 0;
       font-size: 1.05rem;
-      color: var(--primary-text);
     }
 
     strong {
@@ -195,46 +165,41 @@
       font-weight: 600;
     }
 
+    /* === ТАБЛИЦЫ === */
     .table-container {
       overflow-x: auto;
       margin: 2rem 0;
-      border-radius: 14px;
+      border-radius: 16px;
+      -webkit-overflow-scrolling: touch;
     }
 
     table {
       width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
+      border-collapse: collapse;
+      table-layout: fixed;
       font-family: 'Inter', sans-serif;
-      min-width: 500px;
-      border: 2px solid #3498db; /* будет переопределяться по блокам */
-      border-radius: 14px;
-      overflow: hidden;
+      font-size: 0.95rem;
     }
 
-    /* Индивидуальные стили таблиц по блокам */
-    #block1 table { border-color: #3498db; }
-    #block2 table { border-color: #2ecc71; }
-    #block3 table { border-color: #3498db; }
-    #block4 table,
-    #block5 table { border-color: #2ecc71; }
-
     th, td {
-      padding: 14px 16px;
+      padding: 12px 10px;
       text-align: left;
-      border-bottom: 1px solid rgba(0,0,0,0.06);
+      word-break: break-word;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
     }
 
     th {
-      background: rgba(52, 152, 219, 0.1); /* светло-голубой */
-      color: #2c3e50;
-      font-weight: 600;
+      font-family: 'Patrick Hand', cursive;
+      text-align: center;
+      background: rgba(52, 152, 219, 0.12);
+      font-weight: 400;
+      letter-spacing: 0.5px;
     }
 
     #block2 th,
     #block4 th,
     #block5 th {
-      background: rgba(46, 204, 113, 0.1); /* светло-зелёный */
+      background: rgba(46, 204, 113, 0.12);
     }
 
     tr:last-child td {
@@ -259,11 +224,8 @@
       font-family: 'Inter', sans-serif;
       font-weight: 500;
       background: white;
+      color: var(--primary-text);
     }
-
-    .green { color: #1e8866; }
-    .peak { color: #1a7f50; border: 2px solid #4caf50; }
-    .red { color: #b72c2c; }
 
     .divider {
       text-align: center;
@@ -282,7 +244,7 @@
       background: #f8fafc;
     }
 
-    /* === МОБИЛЬНАЯ ВЕРСИЯ === */
+    /* === МОБИЛЬНОЕ МЕНЮ === */
     @media (max-width: 768px) {
       .burger { display: flex; }
 
@@ -310,22 +272,16 @@
       h3 { font-size: 2rem; }
       section { padding: 3rem 1.5rem; }
       .card { padding: 1.8rem; }
-      p, ul, ol { font-size: 1rem; }
+      table { font-size: 0.85rem; }
+      th, td { padding: 10px 8px; }
     }
   </style>
 </head>
 <body>
 
-  <div class="background-shapes">
-    <div class="shape shape-1"></div>
-    <div class="shape shape-2"></div>
-    <div class="shape shape-3"></div>
-    <div class="shape shape-4"></div>
-  </div>
-
   <header>
     <div class="nav-container">
-      <div class="logo">Адизес</div>
+      <div class="logo"><span class="logo-text">Adizes</span></div>
       <div class="burger" id="burger">
         <span></span>
         <span></span>
@@ -347,9 +303,9 @@
 
   <main>
     <section id="intro" data-aos="fade-up">
-      <h1>Менеджмент изменений по методологии Адизеса</h1>
-      <div class="card" style="background: #f9f7fd;">
-        <p>Методология Адизеса — это системный подход к управлению изменениями в организациях, основанный на понимании жизненного цикла компании, балансе управленческих функций и принципах эффективного принятия решений.</p>
+      <h1>Менеджмент изменений по методологии Adizes</h1>
+      <div class="card">
+        <p>Методология Adizes — это системный подход к управлению изменениями в организациях, основанный на понимании жизненного цикла компании, балансе управленческих функций и принципах эффективного принятия решений.</p>
         <p>Этот сайт представляет собой структурированное резюме ключевых идей вебинара, посвящённого трансформационному менеджменту.</p>
       </div>
     </section>
@@ -454,15 +410,15 @@
       <h2>Жизненный цикл организации</h2>
       <div class="card">
         <div class="timeline">
-          <div class="stage green">Ухаживание</div>
-          <div class="stage green">Младенчество</div>
-          <div class="stage green">Давай-давай</div>
-          <div class="stage green">Юность</div>
-          <div class="stage peak">Расцвет</div>
-          <div class="stage red">Стабильность</div>
-          <div class="stage red">Аристократия</div>
-          <div class="stage red">Охота на ведьм</div>
-          <div class="stage red">Смерть</div>
+          <div class="stage">Ухаживание</div>
+          <div class="stage">Младенчество</div>
+          <div class="stage">Давай-давай</div>
+          <div class="stage">Юность</div>
+          <div class="stage" style="border:2px solid #27ae60;">Расцвет</div>
+          <div class="stage">Стабильность</div>
+          <div class="stage">Аристократия</div>
+          <div class="stage">Охота на ведьм</div>
+          <div class="stage">Смерть</div>
         </div>
         <p><strong>Ключевая задача лидера</strong> — провести компанию через <strong>Юность</strong> и удержать в <strong>Расцвете</strong>.</p>
       </div>
@@ -472,7 +428,7 @@
 
     <section id="conclusion" data-aos="fade-up">
       <h2>Общий вывод и ключевые идеи</h2>
-      <div class="card" style="background: #f0f8f4;">
+      <div class="card">
         <ol>
           <li><strong>Менеджмент = управление изменениями.</strong></li>
           <li><strong>Баланс и цикличность:</strong> PAEI + три цикла управления.</li>
@@ -487,7 +443,7 @@
 
   <footer>
     <p>© 2025 | Приватный ресурс. Все права защищены.</p>
-    <p>Содержание основано на резюме вебинара по методологии Адизеса.</p>
+    <p>Содержание основано на резюме вебинара по методологии Adizes.</p>
   </footer>
 
   <!-- AOS -->
