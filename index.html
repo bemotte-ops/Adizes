@@ -15,8 +15,10 @@
   <style>
     :root {
       --primary-text: #2c3e50;
+      --light-text: #ffffff;
       --card-radius: 20px;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+      --block-bg: #33a2c6; /* 80% #3498db + 20% #2ecc71 */
     }
 
     * {
@@ -140,20 +142,24 @@
       margin: 2.5rem auto;
       box-shadow: var(--shadow);
       transition: transform 0.4s ease;
-      color: var(--primary-text);
+      color: var(--light-text);
+      background: white;
+    }
+
+    /* ЕДИНЫЙ ФОН ДЛЯ БЛОКОВ 1–5 */
+    #block1 .card,
+    #block2 .card,
+    #block3 .card,
+    #block4 .card,
+    #block5 .card {
+      background: var(--block-bg);
+      color: var(--light-text);
     }
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+      box-shadow: 0 14px 45px rgba(0,0,0,0.15);
     }
-
-    /* ЯРКИЕ, НО СВЕТЛЫЕ ФОНЫ */
-    #block1 .card { background: #d6eaf8; }
-    #block2 .card { background: #d5f5e3; }
-    #block3 .card { background: #ebf5fb; }
-    #block4 .card { background: #e8f6f3; }
-    #block5 .card { background: #d1f2eb; }
 
     p, ul, ol, li {
       margin: 1rem 0;
@@ -161,8 +167,13 @@
     }
 
     strong {
-      color: var(--primary-text);
+      color: white;
       font-weight: 600;
+    }
+
+    #intro strong,
+    #conclusion strong {
+      color: var(--primary-text);
     }
 
     /* === ТАБЛИЦЫ === */
@@ -179,33 +190,29 @@
       table-layout: fixed;
       font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
+      color: var(--light-text);
     }
 
     th, td {
       padding: 12px 10px;
       text-align: left;
       word-break: break-word;
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+      border-bottom: 1px solid rgba(255,255,255,0.25);
     }
 
     th {
       font-family: 'Patrick Hand', cursive;
       text-align: center;
-      background: rgba(52, 152, 219, 0.12);
+      background: rgba(0,0,0,0.15);
       font-weight: 400;
       letter-spacing: 0.5px;
-    }
-
-    #block2 th,
-    #block4 th,
-    #block5 th {
-      background: rgba(46, 204, 113, 0.12);
     }
 
     tr:last-child td {
       border-bottom: none;
     }
 
+    /* === ЖИЗНЕННЫЙ ЦИКЛ === */
     .timeline {
       display: flex;
       flex-wrap: wrap;
@@ -223,8 +230,26 @@
       min-width: 70px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
-      background: white;
-      color: var(--primary-text);
+      background: rgba(255,255,255,0.2);
+      color: white;
+    }
+
+    .stage.green {
+      background: rgba(46, 204, 113, 0.3);
+      color: #27ae60;
+      border: 1px solid rgba(46, 204, 113, 0.6);
+    }
+
+    .stage.peak {
+      background: rgba(46, 204, 113, 0.4);
+      color: #1e8449;
+      border: 2px solid #2ecc71;
+    }
+
+    .stage.red {
+      background: rgba(231, 76, 60, 0.25);
+      color: #c0392b;
+      border: 1px solid rgba(231, 76, 60, 0.5);
     }
 
     .divider {
@@ -410,15 +435,15 @@
       <h2>Жизненный цикл организации</h2>
       <div class="card">
         <div class="timeline">
-          <div class="stage">Ухаживание</div>
-          <div class="stage">Младенчество</div>
-          <div class="stage">Давай-давай</div>
-          <div class="stage">Юность</div>
-          <div class="stage" style="border:2px solid #27ae60;">Расцвет</div>
-          <div class="stage">Стабильность</div>
-          <div class="stage">Аристократия</div>
-          <div class="stage">Охота на ведьм</div>
-          <div class="stage">Смерть</div>
+          <div class="stage green">Ухаживание</div>
+          <div class="stage green">Младенчество</div>
+          <div class="stage green">Давай-давай</div>
+          <div class="stage green">Юность</div>
+          <div class="stage peak">Расцвет</div>
+          <div class="stage red">Стабильность</div>
+          <div class="stage red">Аристократия</div>
+          <div class="stage red">Охота на ведьм</div>
+          <div class="stage red">Смерть</div>
         </div>
         <p><strong>Ключевая задача лидера</strong> — провести компанию через <strong>Юность</strong> и удержать в <strong>Расцвете</strong>.</p>
       </div>
