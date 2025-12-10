@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <title>Менеджмент изменений по Адизесу</title>
+  <title>Менеджмент изменений по методологии Адизеса</title>
 
-  <!-- Шрифты -->
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Dancing+Script:wght@400;700&family=Lobster&family=Cormorant+Garamond:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <!-- Подключаем Patrick Hand с поддержкой кириллицы -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
 
-  <!-- AOS -->
+  <!-- AOS для анимаций -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
@@ -18,7 +18,6 @@
       --bg: linear-gradient(135deg, #f8f9fe 0%, #f0f7ff 100%);
       --card-radius: 20px;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-      --border-light: rgba(0,0,0,0.05);
     }
 
     * {
@@ -29,16 +28,17 @@
 
     body {
       background: var(--bg);
-      font-family: 'Cormorant Garamond', serif;
-      color: #333;
-      line-height: 1.8;
+      font-family: 'Patrick Hand', cursive;
+      color: var(--primary-text);
+      line-height: 1.7;
       scroll-behavior: smooth;
       padding-top: 80px;
       position: relative;
       min-height: 100vh;
+      font-size: 1.15rem;
     }
 
-    /* === ФОНОВЫЕ АКЦЕНТЫ === */
+    /* === ФОНОВЫЕ ФИГУРЫ === */
     .background-shapes {
       position: fixed;
       top: 0;
@@ -51,8 +51,6 @@
 
     .shape {
       position: absolute;
-      border-radius: 50%;
-      background: currentColor;
       opacity: 0.04;
     }
 
@@ -61,7 +59,7 @@
       height: 400px;
       top: 10%;
       left: 5%;
-      color: #3498db;
+      background: #3498db;
       border-radius: 36% 64% 30% 70% / 40% 35% 65% 60%;
     }
 
@@ -70,7 +68,7 @@
       height: 300px;
       bottom: 15%;
       right: 8%;
-      color: #2ecc71;
+      background: #2ecc71;
       border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
     }
 
@@ -79,7 +77,7 @@
       height: 250px;
       top: 40%;
       right: 20%;
-      color: #f39c12;
+      background: #f39c12;
       border-radius: 60% 40% 35% 65% / 30% 60% 40% 70%;
     }
 
@@ -88,11 +86,11 @@
       height: 200px;
       bottom: 30%;
       left: 15%;
-      color: #9b59b6;
+      background: #9b59b6;
       border-radius: 55% 45% 50% 50% / 40% 60% 50% 50%;
     }
 
-    /* === МЕНЮ === */
+    /* === МЕНЮ (оставим Inter для читаемости) === */
     header {
       position: fixed;
       top: 0;
@@ -109,16 +107,15 @@
       justify-content: center;
       list-style: none;
       flex-wrap: wrap;
-      gap: 1.8rem;
+      gap: 1.6rem;
     }
 
     nav a {
       text-decoration: none;
       color: var(--primary-text);
-      font-weight: 500;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', sans-serif; /* нейтральный шрифт для меню */
       font-size: 1.05rem;
-      transition: all 0.3s ease;
+      transition: color 0.3s;
       padding: 0.4rem 0.6rem;
       border-radius: 8px;
     }
@@ -137,12 +134,13 @@
     }
 
     h1, h2, h3 {
+      font-family: 'Patrick Hand', cursive;
+      color: var(--primary-text);
       text-align: center;
-      font-size: 3rem;
       padding: 2rem 0 1.5rem;
       position: relative;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.04);
-      letter-spacing: 0.5px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      letter-spacing: 0.8px;
       font-weight: 400;
     }
 
@@ -180,15 +178,6 @@
       transition: all 0.4s ease;
     }
 
-/* --- ВАРИАНТ B: Dancing Script --- */
-h1, h2, h3 {
-  font-family: 'Dancing Script', cursive;
-  color: var(--primary-text);
-  text-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  letter-spacing: 0.5px;
-  font-weight: 400;
-}
-
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.08);
@@ -200,40 +189,42 @@ h1, h2, h3 {
     #block4 .card { background: #f0fdf7; }
     #block5 .card { background: #fff8f0; }
 
-    p, ul, ol {
-      margin: 1.2rem 0;
+    p, ul, ol, li {
+      margin: 1rem 0;
       font-size: 1.15rem;
-      font-family: 'Cormorant Garamond', serif;
+    }
+
+    ul ul {
+      margin-top: 0.5rem;
     }
 
     strong {
-      color: var(--primary-text);
-      font-weight: 600;
+      font-weight: bold;
+      color: #1a365d;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin: 2rem 0;
-      font-family: 'Inter', sans-serif;
-      font-size: 1rem;
+      font-size: 1.05rem;
     }
 
     th, td {
-      padding: 14px;
+      padding: 12px 14px;
       text-align: left;
       border-bottom: 1px solid #eee;
     }
 
     th {
       background: #e8f4fc;
-      color: var(--primary-text);
-      font-weight: 600;
+      font-weight: bold;
     }
 
     tr:nth-child(even) { background: #fafcff; }
     tr:hover { background: #eef8ff; }
 
+    /* Таймлайн жизненного цикла */
     .timeline {
       display: flex;
       flex-wrap: wrap;
@@ -249,8 +240,7 @@ h1, h2, h3 {
       border-radius: 12px;
       font-size: 0.95rem;
       min-width: 80px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
+      font-family: 'Patrick Hand', cursive;
     }
 
     .green { background: #e6f7ee; color: #1e8866; }
@@ -268,7 +258,7 @@ h1, h2, h3 {
       text-align: center;
       padding: 4rem 2rem 2rem;
       color: #7f8c8d;
-      font-family: 'Inter', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       font-size: 0.95rem;
       background: #f8fafc;
     }
@@ -278,7 +268,7 @@ h1, h2, h3 {
       h2 { font-size: 2.3rem; }
       h3 { font-size: 2rem; }
       section { padding: 3.5rem 1.5rem 3rem; }
-      nav ul { gap: 1.2rem; }
+      nav ul { gap: 1.2rem; font-size: 1rem; }
       .card { padding: 1.8rem; }
       .timeline { gap: 8px; }
       .stage { font-size: 0.85rem; padding: 0.8rem 0.4rem; }
@@ -312,7 +302,6 @@ h1, h2, h3 {
   </header>
 
   <main>
-
     <section id="intro" data-aos="fade-up">
       <h1>Менеджмент изменений по методологии Адизеса</h1>
       <div class="card" style="background: #fffaf0;">
@@ -458,7 +447,6 @@ h1, h2, h3 {
         <p><strong>Программа трансформации</strong> строится на четырёх основах: общая идентичность, выровненная структура, отлаженные процессы и сильная команда.</p>
       </div>
     </section>
-
   </main>
 
   <footer>
@@ -466,13 +454,11 @@ h1, h2, h3 {
     <p>Содержание основано на резюме вебинара по методологии Адизеса.</p>
   </footer>
 
-  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
     AOS.init({
       duration: 900,
-      once: true,
-      easing: 'ease-out-cubic'
+      once: true
     });
   </script>
 
