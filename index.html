@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex" />
-  <title>Менеджмент изменений по методологии Адизеса</title>
+  <title>Менеджмент изменений по Адизесу</title>
 
-  <!-- Подключаем Patrick Hand с поддержкой кириллицы -->
-  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet" />
+  <!-- Шрифты -->
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- AOS для анимаций -->
+  <!-- AOS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 
   <style>
@@ -28,14 +28,12 @@
 
     body {
       background: var(--bg);
-      font-family: 'Patrick Hand', cursive;
-      color: var(--primary-text);
+      font-family: 'Inter', sans-serif;
+      color: #333;
       line-height: 1.7;
       scroll-behavior: smooth;
-      padding-top: 80px;
       position: relative;
       min-height: 100vh;
-      font-size: 1.15rem;
     }
 
     /* === ФОНОВЫЕ ФИГУРЫ === */
@@ -51,111 +49,108 @@
 
     .shape {
       position: absolute;
+      border-radius: 50%;
+      background: currentColor;
       opacity: 0.04;
     }
 
-    .shape-1 {
-      width: 400px;
-      height: 400px;
-      top: 10%;
-      left: 5%;
-      background: #3498db;
-      border-radius: 36% 64% 30% 70% / 40% 35% 65% 60%;
+    .shape-1 { width: 400px; height: 400px; top: 10%; left: 5%; color: #3498db; border-radius: 36% 64% 30% 70% / 40% 35% 65% 60%; }
+    .shape-2 { width: 300px; height: 300px; bottom: 15%; right: 8%; color: #2ecc71; border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%; }
+    .shape-3 { width: 250px; height: 250px; top: 40%; right: 20%; color: #f39c12; border-radius: 60% 40% 35% 65% / 30% 60% 40% 70%; }
+    .shape-4 { width: 200px; height: 200px; bottom: 30%; left: 15%; color: #9b59b6; border-radius: 55% 45% 50% 50% / 40% 60% 50% 50%; }
+
+    @media (max-width: 768px) {
+      .shape-1, .shape-3 { display: none; }
+      .shape-2 { width: 200px; height: 200px; bottom: 5%; right: 2%; }
+      .shape-4 { width: 150px; height: 150px; bottom: 25%; left: 5%; }
     }
 
-    .shape-2 {
-      width: 300px;
-      height: 300px;
-      bottom: 15%;
-      right: 8%;
-      background: #2ecc71;
-      border-radius: 45% 55% 60% 40% / 50% 45% 55% 50%;
-    }
-
-    .shape-3 {
-      width: 250px;
-      height: 250px;
-      top: 40%;
-      right: 20%;
-      background: #f39c12;
-      border-radius: 60% 40% 35% 65% / 30% 60% 40% 70%;
-    }
-
-    .shape-4 {
-      width: 200px;
-      height: 200px;
-      bottom: 30%;
-      left: 15%;
-      background: #9b59b6;
-      border-radius: 55% 45% 50% 50% / 40% 60% 50% 50%;
-    }
-
-    /* === МЕНЮ (оставим Inter для читаемости) === */
+    /* === ШАПКА И МЕНЮ === */
     header {
-      position: fixed;
+      position: sticky;
       top: 0;
-      width: 100%;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       padding: 1rem 2rem;
       z-index: 1000;
-      box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-weight: 600;
+      color: var(--primary-text);
+      font-size: 1.2rem;
     }
 
     nav ul {
       display: flex;
-      justify-content: center;
       list-style: none;
-      flex-wrap: wrap;
-      gap: 1.6rem;
+      gap: 1.5rem;
     }
 
     nav a {
       text-decoration: none;
       color: var(--primary-text);
-      font-family: 'Segoe UI', sans-serif; /* нейтральный шрифт для меню */
-      font-size: 1.05rem;
-      transition: color 0.3s;
-      padding: 0.4rem 0.6rem;
-      border-radius: 8px;
+      font-weight: 500;
+      transition: color 0.2s;
     }
 
     nav a:hover {
-      background: #eef7ff;
       color: #2980b9;
     }
 
-    /* === СЕКЦИИ === */
+    /* === БУРГЕР-МЕНЮ === */
+    .burger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 30px;
+      height: 22px;
+      justify-content: space-between;
+    }
+
+    .burger span {
+      height: 3px;
+      width: 100%;
+      background: var(--primary-text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    /* === КОНТЕНТ === */
+    main {
+      padding-top: 90px;
+      padding-bottom: 80px;
+    }
+
     section {
-      padding: 5rem 2rem 4rem;
+      padding: 4rem 2rem;
       max-width: 960px;
       margin: 0 auto;
-      position: relative;
     }
 
     h1, h2, h3 {
       font-family: 'Patrick Hand', cursive;
       color: var(--primary-text);
       text-align: center;
+      font-size: 3rem;
       padding: 2rem 0 1.5rem;
       position: relative;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.04);
       letter-spacing: 0.8px;
       font-weight: 400;
     }
 
-    h1 {
-      font-size: 3.4rem;
-    }
-
-    h2 {
-      font-size: 3rem;
-    }
-
-    h3 {
-      font-size: 2.4rem;
-      margin-top: 2rem;
-    }
+    h1 { font-size: 3.4rem; }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 2.4rem; margin-top: 2rem; }
 
     h1::after,
     h2::after {
@@ -172,14 +167,14 @@
     .card {
       background: white;
       border-radius: var(--card-radius);
-      padding: 2.5rem;
+      padding: 2.2rem;
       margin: 2.5rem auto;
       box-shadow: var(--shadow);
-      transition: all 0.4s ease;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
 
@@ -191,56 +186,61 @@
 
     p, ul, ol, li {
       margin: 1rem 0;
-      font-size: 1.15rem;
-    }
-
-    ul ul {
-      margin-top: 0.5rem;
+      font-size: 1.05rem;
     }
 
     strong {
-      font-weight: bold;
-      color: #1a365d;
+      color: var(--primary-text);
+      font-weight: 600;
+    }
+
+    /* === АДАПТИВНЫЕ ТАБЛИЦЫ === */
+    .table-container {
+      overflow-x: auto;
+      margin: 2rem 0;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin: 2rem 0;
-      font-size: 1.05rem;
+      font-family: 'Inter', sans-serif;
+      min-width: 500px; /* чтобы не сжималась слишком */
     }
 
     th, td {
-      padding: 12px 14px;
+      padding: 12px 16px;
       text-align: left;
       border-bottom: 1px solid #eee;
     }
 
     th {
       background: #e8f4fc;
-      font-weight: bold;
+      color: var(--primary-text);
+      font-weight: 600;
     }
 
     tr:nth-child(even) { background: #fafcff; }
     tr:hover { background: #eef8ff; }
 
-    /* Таймлайн жизненного цикла */
     .timeline {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 12px;
+      gap: 10px;
       margin: 2.5rem 0;
       padding: 1.5rem 0;
     }
 
     .stage {
       text-align: center;
-      padding: 1rem 0.6rem;
+      padding: 1rem 0.5rem;
       border-radius: 12px;
-      font-size: 0.95rem;
-      min-width: 80px;
-      font-family: 'Patrick Hand', cursive;
+      font-size: 0.9rem;
+      min-width: 70px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
     }
 
     .green { background: #e6f7ee; color: #1e8866; }
@@ -252,29 +252,47 @@
       margin: 3rem 0;
       color: #95a5a6;
       font-size: 1.4rem;
+      font-family: 'Inter', sans-serif;
     }
 
     footer {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 3rem 2rem;
       color: #7f8c8d;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Inter', sans-serif;
       font-size: 0.95rem;
       background: #f8fafc;
     }
 
+    /* === МОБИЛЬНАЯ ВЕРСИЯ === */
     @media (max-width: 768px) {
+      .burger { display: flex; }
+
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 0;
+        gap: 1.8rem;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+        transition: clip-path 0.4s ease-in-out;
+      }
+
+      nav ul.active {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+      }
+
       h1 { font-size: 2.6rem; }
       h2 { font-size: 2.3rem; }
       h3 { font-size: 2rem; }
-      section { padding: 3.5rem 1.5rem 3rem; }
-      nav ul { gap: 1.2rem; font-size: 1rem; }
+      section { padding: 3rem 1.5rem; }
       .card { padding: 1.8rem; }
-      .timeline { gap: 8px; }
-      .stage { font-size: 0.85rem; padding: 0.8rem 0.4rem; }
-      .shape-1, .shape-3 { display: none; }
-      .shape-2 { width: 200px; height: 200px; bottom: 5%; right: 2%; }
-      .shape-4 { width: 150px; height: 150px; bottom: 25%; left: 5%; }
+      p, ul, ol { font-size: 1rem; }
     }
   </style>
 </head>
@@ -288,36 +306,40 @@
   </div>
 
   <header>
-    <nav>
-      <ul>
-        <li><a href="#intro">Введение</a></li>
-        <li><a href="#block1">Проблемы</a></li>
-        <li><a href="#block2">Циклы</a></li>
-        <li><a href="#block3">PAEI</a></li>
-        <li><a href="#block4">CAPI</a></li>
-        <li><a href="#block5">Жизненный цикл</a></li>
-        <li><a href="#conclusion">Вывод</a></li>
-      </ul>
-    </nav>
+    <div class="nav-container">
+      <div class="logo">Адизес</div>
+      <div class="burger" id="burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <nav>
+        <ul id="menu">
+          <li><a href="#intro">Введение</a></li>
+          <li><a href="#block1">Проблемы</a></li>
+          <li><a href="#block2">Подходы</a></li>
+          <li><a href="#block3">Функции PAEI</a></li>
+          <li><a href="#block4">Принцип CAPI</a></li>
+          <li><a href="#block5">Жизненный цикл</a></li>
+          <li><a href="#conclusion">Вывод</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
   <main>
     <section id="intro" data-aos="fade-up">
       <h1>Менеджмент изменений по методологии Адизеса</h1>
-      <div class="card" style="background: #fffaf0;">
-        <p>
-          Методология Адизеса — это системный подход к управлению изменениями в организациях, основанный на понимании жизненного цикла компании, балансе управленческих функций и принципах эффективного принятия решений.
-        </p>
-        <p>
-          Этот сайт представляет собой структурированное резюме ключевых идей вебинара, посвящённого трансформационному менеджменту.
-        </p>
+      <div class="card">
+        <p>Методология Адизеса — это системный подход к управлению изменениями в организациях, основанный на понимании жизненного цикла компании, балансе управленческих функций и принципах эффективного принятия решений.</p>
+        <p>Этот сайт представляет собой структурированное резюме ключевых идей вебинара, посвящённого трансформационному менеджменту.</p>
       </div>
     </section>
 
     <div class="divider">—</div>
 
     <section id="block1" data-aos="fade-up">
-      <h2>Блок 1: Проблемы и управление изменениями</h2>
+      <h2>Проблемы и управление изменениями</h2>
       <div class="card">
         <ul>
           <li><strong>Проблемы – это нормально:</strong> В живой организации проблемы будут всегда. Принцип Toyota: «Отсутствие проблем – это проблема».</li>
@@ -330,83 +352,79 @@
             </ul>
           </li>
         </ul>
-        <p><strong>Вывод:</strong> Управление изменениями — основная работа менеджера. Здоровая организация не избегает проблем, а эффективно их решает.</p>
+        <p><strong>Вывод:</strong> Управление изменениями — основная работа менеджера.</p>
       </div>
     </section>
 
     <div class="divider">—</div>
 
     <section id="block2" data-aos="fade-up">
-      <h2>Блок 2: Подходы и управленческие циклы</h2>
+      <h2>Подходы и управленческие циклы</h2>
       <div class="card">
         <h3>Демократура</h3>
         <ul>
           <li><strong>Демократия</strong> — на этапе анализа и выработки решения.</li>
           <li><strong>Диктатура</strong> — на этапе внедрения («пойди и сделай»).</li>
-          <li><strong>Демократура</strong> — гибридный подход: демократическая выработка решения с чёткой «точкой принятия решения».</li>
+          <li><strong>Демократура</strong> — гибридный подход с чёткой «точкой принятия решения».</li>
         </ul>
 
         <h3>Три цикла управления</h3>
-        <table>
-          <thead>
-            <tr>
-              <th>Цикл</th>
-              <th>Объект</th>
-              <th>Роль менеджера</th>
-              <th>Стиль решений</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Операционный</td><td>Текущие клиенты</td><td>Водитель</td><td>Диктатура</td></tr>
-            <tr><td>Улучшений</td><td>Процессы</td><td>Механик</td><td>Демократия</td></tr>
-            <tr><td>Стратегический</td><td>Бизнес-модель</td><td>Бизнес-дизайнер</td><td>Демократия</td></tr>
-          </tbody>
-        </table>
-
-        <p><strong>Вывод:</strong> Менеджер должен управлять тремя циклами одновременно, переключаясь между ролями.</p>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Цикл</th>
+                <th>Объект</th>
+                <th>Роль менеджера</th>
+                <th>Стиль решений</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Операционный</td><td>Текущие клиенты</td><td>Водитель</td><td>Диктатура</td></tr>
+              <tr><td>Улучшений</td><td>Процессы</td><td>Механик</td><td>Демократия</td></tr>
+              <tr><td>Стратегический</td><td>Бизнес-модель</td><td>Бизнес-дизайнер</td><td>Демократия</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
     <div class="divider">—</div>
 
     <section id="block3" data-aos="fade-up">
-      <h2>Блок 3: 4 функции («витамины») менеджмента</h2>
+      <h2>Функции («витамины») менеджмента</h2>
       <div class="card">
-        <table>
-          <thead>
-            <tr>
-              <th>Функция</th>
-              <th>Фокус</th>
-              <th>Риски дисбаланса</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>P</strong> – Производство</td><td>Краткосрочная результативность</td><td>Неэффективность</td></tr>
-            <tr><td><strong>A</strong> – Администрирование</td><td>Краткосрочная эффективность</td><td>Бюрократия</td></tr>
-            <tr><td><strong>E</strong> – Предпринимательство</td><td>Долгосрочная результативность</td><td>Отставание от рынка</td></tr>
-            <tr><td><strong>I</strong> – Интеграция</td><td>Долгосрочная эффективность</td><td>Разобщённость</td></tr>
-          </tbody>
-        </table>
-
-        <p><strong>Ключевые принципы:</strong></p>
-        <ul>
-          <li>Все 4 функции противоречат друг другу, но конфликт должен быть здоровым.</li>
-          <li>Краткосрочные функции (P, A) подавляют долгосрочные (E, I).</li>
-          <li>Для баланса нужна <strong>взаимодополняющая команда</strong>.</li>
-        </ul>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Функция</th>
+                <th>Фокус</th>
+                <th>Риски дисбаланса</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>P</strong> – Производство</td><td>Краткосрочная результативность</td><td>Неэффективность</td></tr>
+              <tr><td><strong>A</strong> – Администрирование</td><td>Краткосрочная эффективность</td><td>Бюрократия</td></tr>
+              <tr><td><strong>E</strong> – Предпринимательство</td><td>Долгосрочная результативность</td><td>Отставание от рынка</td></tr>
+              <tr><td><strong>I</strong> – Интеграция</td><td>Долгосрочная эффективность</td><td>Разобщённость</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>Ключевые принципы:</strong> все 4 функции противоречат, но конфликт должен быть здоровым.</p>
       </div>
     </section>
 
     <div class="divider">—</div>
 
     <section id="block4" data-aos="fade-up">
-      <h2>Блок 4: Принцип CAPI</h2>
+      <h2>Принцип CAPI</h2>
       <div class="card">
         <p>Для успешного внедрения изменений необходимо объединить три источника энергии:</p>
         <ul>
           <li><strong>A (Authority)</strong> — Полномочия: право принимать решение.</li>
-          <li><strong>P (Power)</strong> — Власть: способность поддержать или отказать в сотрудничестве (исполнители).</li>
-          <li><strong>I (Influence)</strong> — Влияние: экспертиза, убеждение (эксперты).</li>
+          <li><strong>P (Power)</strong> — Власть: способность поддержать или отказать в сотрудничестве.</li>
+          <li><strong>I (Influence)</strong> — Влияние: экспертиза, убеждение.</li>
         </ul>
         <p><strong>Суть:</strong> «Запереть в одной комнате» человека с полномочиями, экспертов и исполнителей.</p>
       </div>
@@ -415,7 +433,7 @@
     <div class="divider">—</div>
 
     <section id="block5" data-aos="fade-up">
-      <h2>Блок 5: Жизненный цикл организации</h2>
+      <h2>Жизненный цикл организации</h2>
       <div class="card">
         <div class="timeline">
           <div class="stage green">Ухаживание</div>
@@ -436,7 +454,7 @@
 
     <section id="conclusion" data-aos="fade-up">
       <h2>Общий вывод и ключевые идеи</h2>
-      <div class="card" style="background: #f0f8f4;">
+      <div class="card">
         <ol>
           <li><strong>Менеджмент = управление изменениями.</strong></li>
           <li><strong>Баланс и цикличность:</strong> PAEI + три цикла управления.</li>
@@ -454,11 +472,39 @@
     <p>Содержание основано на резюме вебинара по методологии Адизеса.</p>
   </footer>
 
+  <!-- AOS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 900,
-      once: true
+    AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
+
+    // Мобильное меню
+    const burger = document.getElementById('burger');
+    const menu = document.getElementById('menu');
+
+    burger.addEventListener('click', () => {
+      menu.classList.toggle('active');
+      // Анимация бургера (опционально)
+      const spans = burger.querySelectorAll('span');
+      if (menu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(6px, -6px)';
+      } else {
+        spans[0].style.transform = 'rotate(0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0)';
+      }
+    });
+
+    // Закрытие меню при клике на ссылку
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('active');
+        const spans = burger.querySelectorAll('span');
+        spans[0].style.transform = 'rotate(0)';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'rotate(0)';
+      });
     });
   </script>
 
