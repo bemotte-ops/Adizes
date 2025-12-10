@@ -106,7 +106,6 @@
       color: #2980b9;
     }
 
-    /* === БУРГЕР-МЕНЮ === */
     .burger {
       display: none;
       flex-direction: column;
@@ -178,15 +177,17 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
 
-    #block1 .card { background: #fdf9f5; }
-    #block2 .card { background: #f0f9ff; }
-    #block3 .card { background: #f8f5fe; }
+    /* === ЦВЕТНЫЕ ФОНЫ БЛОКОВ === */
+    #block1 .card { background: #e3f2fd; }
+    #block2 .card { background: #e8f5e9; }
+    #block3 .card { background: #f0f8ff; }
     #block4 .card { background: #f0fdf7; }
-    #block5 .card { background: #fff8f0; }
+    #block5 .card { background: #eef7ff; }
 
     p, ul, ol, li {
       margin: 1rem 0;
       font-size: 1.05rem;
+      color: var(--primary-text);
     }
 
     strong {
@@ -194,35 +195,51 @@
       font-weight: 600;
     }
 
-    /* === АДАПТИВНЫЕ ТАБЛИЦЫ === */
     .table-container {
       overflow-x: auto;
       margin: 2rem 0;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border-radius: 14px;
     }
 
     table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       font-family: 'Inter', sans-serif;
-      min-width: 500px; /* чтобы не сжималась слишком */
+      min-width: 500px;
+      border: 2px solid #3498db; /* будет переопределяться по блокам */
+      border-radius: 14px;
+      overflow: hidden;
     }
 
+    /* Индивидуальные стили таблиц по блокам */
+    #block1 table { border-color: #3498db; }
+    #block2 table { border-color: #2ecc71; }
+    #block3 table { border-color: #3498db; }
+    #block4 table,
+    #block5 table { border-color: #2ecc71; }
+
     th, td {
-      padding: 12px 16px;
+      padding: 14px 16px;
       text-align: left;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
     }
 
     th {
-      background: #e8f4fc;
-      color: var(--primary-text);
+      background: rgba(52, 152, 219, 0.1); /* светло-голубой */
+      color: #2c3e50;
       font-weight: 600;
     }
 
-    tr:nth-child(even) { background: #fafcff; }
-    tr:hover { background: #eef8ff; }
+    #block2 th,
+    #block4 th,
+    #block5 th {
+      background: rgba(46, 204, 113, 0.1); /* светло-зелёный */
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
 
     .timeline {
       display: flex;
@@ -241,11 +258,12 @@
       min-width: 70px;
       font-family: 'Inter', sans-serif;
       font-weight: 500;
+      background: white;
     }
 
-    .green { background: #e6f7ee; color: #1e8866; }
-    .peak { background: #e0f0e0; color: #1a7f50; border: 2px solid #4caf50; }
-    .red { background: #fcebe9; color: #b72c2c; }
+    .green { color: #1e8866; }
+    .peak { color: #1a7f50; border: 2px solid #4caf50; }
+    .red { color: #b72c2c; }
 
     .divider {
       text-align: center;
@@ -330,7 +348,7 @@
   <main>
     <section id="intro" data-aos="fade-up">
       <h1>Менеджмент изменений по методологии Адизеса</h1>
-      <div class="card">
+      <div class="card" style="background: #f9f7fd;">
         <p>Методология Адизеса — это системный подход к управлению изменениями в организациях, основанный на понимании жизненного цикла компании, балансе управленческих функций и принципах эффективного принятия решений.</p>
         <p>Этот сайт представляет собой структурированное резюме ключевых идей вебинара, посвящённого трансформационному менеджменту.</p>
       </div>
@@ -454,7 +472,7 @@
 
     <section id="conclusion" data-aos="fade-up">
       <h2>Общий вывод и ключевые идеи</h2>
-      <div class="card">
+      <div class="card" style="background: #f0f8f4;">
         <ol>
           <li><strong>Менеджмент = управление изменениями.</strong></li>
           <li><strong>Баланс и цикличность:</strong> PAEI + три цикла управления.</li>
@@ -477,13 +495,11 @@
   <script>
     AOS.init({ duration: 900, once: true, easing: 'ease-out-cubic' });
 
-    // Мобильное меню
     const burger = document.getElementById('burger');
     const menu = document.getElementById('menu');
 
     burger.addEventListener('click', () => {
       menu.classList.toggle('active');
-      // Анимация бургера (опционально)
       const spans = burger.querySelectorAll('span');
       if (menu.classList.contains('active')) {
         spans[0].style.transform = 'rotate(45deg) translate(6px, 6px)';
@@ -496,7 +512,6 @@
       }
     });
 
-    // Закрытие меню при клике на ссылку
     document.querySelectorAll('nav a').forEach(link => {
       link.addEventListener('click', () => {
         menu.classList.remove('active');
